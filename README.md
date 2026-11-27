@@ -1,187 +1,256 @@
 # DOMCHAT 🤖
+### Domain Conversational Hub for Analytical Tasks
 
-Domain Conversational Hub for Analytical Tasks
+**AI-Powered Domain Analysis, Document Intelligence & Conversational Reporting**
 
-**Responsive AI for Domain Analysis & Reporting**
+DOMCHAT is an intelligent AI-powered web application designed to simplify domain analysis, document understanding, and information retrieval through conversational interactions. Built using Python and Flask, it combines domain intelligence, document processing, Retrieval-Augmented Generation (RAG), and Large Language Models (LLMs) to deliver contextual insights and analytical responses through an interactive web interface.
 
-DOMCHAT is an intelligent web application that provides AI-powered domain analysis and reporting capabilities. Built with Python and Flask, it offers a responsive interface for comprehensive domain insights and analytics.
+The application supports multiple analysis sessions and provides flexibility through cloud-based and locally hosted language models.
 
-## 🚀 Features
+## 🚀 Key Features
 
-- **AI-Powered Analysis**: Advanced domain analysis using artificial intelligence
-- **Responsive Design**: Modern web interface that works across all devices
-- **Real-time Reporting**: Generate comprehensive reports on domain data
-- **Interactive Dashboard**: User-friendly interface for domain management
-- **RESTful API**: Robust API endpoints for programmatic access
-- **Playwright Integration**: Advanced web scraping and browser automation
+- **AI-Powered Domain Analysis:** Analyze domain-related information and generate contextual insights.
+- **URL Analysis:** Process and analyze information obtained from web URLs.
+- **Document Intelligence:** Upload and process documents for conversational analysis.
+- **Conversational AI:** Interact with the system using natural language queries.
+- **Retrieval-Augmented Generation (RAG):** Retrieve relevant information from stored knowledge to improve response relevance.
+- **Vector Database Integration:** Use ChromaDB for storing and retrieving document embeddings.
+- **Multiple LLM Providers:** Support for Groq API and locally hosted language models.
+- **Session Management:** Create and manage multiple independent analysis sessions.
+- **Interactive Web Interface:** User-friendly interface for domain and document interactions.
+- **RESTful API:** Structured backend endpoints for application functionality.
+- **Logging and Diagnostics:** Application logging and system status monitoring.
 
-## 🛠️ Tech Stack
+## 🛠️ Technology Stack
 
-- **Backend**: Python (71.2%)
-- **Frontend**: JavaScript (16.8%), CSS (9.5%), HTML (2.0%)
-- **Framework**: Flask
-- **Web Automation**: Playwright
-- **AI Integration**: Groq API
-- **Deployment**: Shell scripts (0.5%)
+| Category | Technologies |
+|---|---|
+| Backend | Python |
+| Frontend | HTML, CSS, JavaScript |
+| Framework | Flask |
+| Vector Database | ChromaDB |
+| Embeddings | Sentence Transformers |
+| AI Integration | Groq API, Local LLM |
+| RAG Framework | Retrieval-Augmented Generation |
+| Document Processing | PDF, DOCX and HTML processing |
+| Web Automation | Playwright (where configured) |
+| Environment Management | Python Virtual Environment |
+
+## 🏗️ System Architecture
+
+DOMCHAT follows a modular architecture that integrates domain analysis, document processing, vector retrieval, and language model inference.
+
+### Core Components
+
+**1. Domain Analysis Engine**
+
+Processes domain-related information and generates meaningful insights using the application's analysis components.
+
+**2. Document Processing Engine**
+
+Extracts and processes content from supported documents, preparing information for semantic retrieval and conversational interactions.
+
+**3. Embedding Generation**
+
+Uses Sentence Transformers to convert textual information into numerical vector representations.
+
+**4. Vector Storage and Retrieval**
+
+Uses ChromaDB to store document embeddings and retrieve relevant information based on semantic similarity.
+
+**5. Language Model Integration**
+
+Uses Groq API or a locally configured language model to generate contextual responses based on retrieved information.
+
+**6. Flask Backend**
+
+Handles API requests, session management, document uploads, analysis operations, and communication between frontend and backend components.
+
+## 🔄 RAG Workflow
+
+DOMCHAT uses a Retrieval-Augmented Generation workflow to provide context-aware responses.
+
+1. **Document Ingestion:** Users upload documents or provide information for analysis.
+2. **Text Extraction:** The application extracts textual content from supported sources.
+3. **Text Processing:** Extracted content is prepared for semantic processing.
+4. **Embedding Generation:** Sentence Transformers generate vector embeddings.
+5. **Vector Storage:** ChromaDB stores embeddings along with their associated metadata.
+6. **Semantic Retrieval:** User queries are converted into embeddings, and relevant information is retrieved.
+7. **Response Generation:** Retrieved context is supplied to the configured language model to generate relevant responses.
 
 ## 📋 Prerequisites
 
-- Ubuntu/Debian-based Linux system (recommended)
-- Python 3.7+
-- Git
-- Sudo privileges for system package installation
+- Python 3.10 or later (compatible with your installed dependencies).
+- Git.
+- pip package manager.
+- Internet connection for installing dependencies and using cloud-based services.
+- Groq API key when using the Groq provider.
+- Sufficient system resources for locally hosted language models.
 
-## 🔧 Quick Installation
+## 🔧 Installation and Setup
 
-**One-command setup:**
+### 1. Clone the Repository
 
-1. **Clone and setup automatically**
-   ```bash
-   git clone https://github.com/mohamedsuhail-n/DOMCHAT.git
-   cd DOMCHAT
-   chmod +x setup.sh
-   ./setup.sh
-   ```
-
-The setup script will automatically:
-- ✅ Update your system packages
-- ✅ Install Python 3, pip, venv, git, and build tools
-- ✅ Create a Python virtual environment (`dcenv`)
-- ✅ Install all Python dependencies
-- ✅ Install Playwright browsers for web automation
-- ✅ Set up the complete development environment
-
-## 🔑 Configuration
-
-**After installation, you need to:**
-
-1. **Create environment file**
-   ```bash
-   touch .env
-   ```
-
-2. **Add your API key to `.env`**
-   ```env
-   GROQ_API_KEY=your_api_key_here
-   ```
-
-3. **Review configuration**
-   - Check `config.py` for additional settings
-   - Modify as needed for your environment
-
-## 🚀 Usage
-
-1. **Activate the virtual environment**
-   ```bash
-   source dcenv/bin/activate
-   ```
-
-2. **Start the application**
-   ```bash
-   python api.py
-   ```
-
-3. **Access the web interface**
-   - Open your browser and navigate to `http://localhost:5000`
-   - Use the interactive dashboard to perform domain analysis
-
-## 📁 Project Structure
-
-```
-DOMCHAT/
-├── api.py              # Main Flask application
-├── config.py           # Configuration settings
-├── requirements.txt    # Python dependencies
-├── setup.sh           # Automated setup script
-├── .env               # Environment variables (create this)
-├── dcenv/             # Python virtual environment
-├── core/              # Core application logic
-├── static/            # CSS, JS, and other static files
-├── templates/         # HTML templates
-└── README.md          # Project documentation
+```bash
+git clone https://github.com/YOUR_USERNAME/DOMCHAT.git
+cd DOMCHAT
 ```
 
-## 🔧 Manual Installation (Alternative)
+### 2. Create a Virtual Environment
 
-If you prefer manual setup:
+**Windows:**
 
-1. **Install system dependencies**
-   ```bash
-   sudo apt update && sudo apt upgrade -y
-   sudo apt install -y python3 python3-pip python3-venv git build-essential
-   ```
+```powershell
+python -m venv dcenv
+```
 
-2. **Create virtual environment**
-   ```bash
-   python3 -m venv dcenv
-   source dcenv/bin/activate
-   ```
+Activate it:
 
-3. **Install Python packages**
-   ```bash
-   pip install --upgrade pip wheel setuptools
-   pip install -r requirements.txt
-   playwright install
-   ```
+```powershell
+.\dcenv\Scripts\Activate.ps1
+```
 
-## 🛠️ Development
+**Linux:**
 
-**Activate environment for development:**
+```bash
+python3 -m venv dcenv
+source dcenv/bin/activate
+```
+
+### 3. Install Dependencies
+
+```bash
+python -m pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 4. Install Playwright Browsers
+
+If Playwright is required by your configured application:
+
+```bash
+playwright install
+```
+
+## 🔑 Environment Configuration
+
+Create a `.env` file in the project root directory.
+
+Add the required configuration:
+
+```env
+GROQ_API_KEY=your_groq_api_key_here
+```
+
+Configure additional settings according to the options available in `config.py`.
+
+**Important:** Never upload your actual API keys or sensitive credentials to GitHub.
+
+## 🚀 Running the Application
+
+### 1. Activate the Virtual Environment
+
+**Windows:**
+
+```powershell
+.\dcenv\Scripts\Activate.ps1
+```
+
+**Linux:**
+
 ```bash
 source dcenv/bin/activate
 ```
 
-**Deactivate when done:**
+### 2. Start the Application
+
 ```bash
-deactivate
+python api.py
 ```
 
-## 🔍 API Integration
+### 3. Access the Application
 
-This project uses the Groq API for AI-powered analysis. Make sure to:
-- Sign up for a Groq API account
-- Get your API key
-- Add it to your `.env` file
+Open your browser and navigate to:
+
+```text
+http://localhost:5000
+```
+
+You can now interact with the DOMCHAT application through its web interface.
+
+## 📁 Project Structure
+
+```text
+DOMCHAT/
+│
+├── api.py                  # Main Flask application and REST API
+├── config.py               # Application configuration
+├── requirements.txt        # Python dependencies
+├── .env                    # Environment variables (not committed)
+├── .gitignore              # Git ignored files
+│
+├── core/
+│   ├── analyzer.py         # Domain analysis logic
+│   ├── llm_singleton.py    # Language model management
+│   └── ...                 # Other core modules
+│
+├── static/                 # CSS, JavaScript and frontend assets
+│
+├── templates/              # HTML templates
+│
+└── README.md               # Project documentation
+```
+
+*Note: The structure above highlights the main components. Refer to the repository for the complete directory structure.*
+
+## 🔌 API Integration
+
+DOMCHAT uses REST API endpoints to connect its frontend with backend functionality.
+
+The backend supports operations such as:
+
+- Application initialization.
+- Analysis session creation and management.
+- Domain analysis.
+- Document uploading and processing.
+- Conversational document queries.
+- Document session status monitoring.
+- Document management.
+- Language model configuration and status.
+
+## 🔮 Future Enhancements
+
+- Advanced domain intelligence and threat analysis.
+- Improved document retrieval and ranking mechanisms.
+- Multilingual conversational support.
+- Enhanced response accuracy and hallucination reduction.
+- Advanced analytical dashboards and reporting.
+- Improved scalability and performance optimization.
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+Contributions are welcome!
 
-## 🚨 Troubleshooting
-
-**Common issues:**
-
-- **Permission errors**: Make sure you have sudo privileges
-- **Virtual environment**: Always activate with `source dcenv/bin/activate`
-- **Missing API key**: Ensure `.env` file exists with valid `GROQ_API_KEY`
-- **Playwright issues**: Run `playwright install` if browsers aren't working
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+1. Fork the repository.
+2. Create a feature branch.
+3. Commit your changes.
+4. Push your branch.
+5. Submit a Pull Request.
 
 ## 👨‍💻 Author
 
-**Mohamed Suhail N**
-- GitHub: [@mohamedsuhail-n](https://github.com/mohamedsuhail-n)
+**Mohamed Ibrahim Badhusha M K**
+
+GitHub: [MohamedIbrahimBadhushaMK](https://github.com/MohamedIbrahimBadhushaMK)
 
 ## 🙏 Acknowledgments
 
-- Thanks to all contributors who have helped improve this project
-- Groq API for AI capabilities
-- Playwright team for browser automation tools
-- Special thanks to the open-source community
-
-## 📞 Support
-
-If you have any questions or need help, please:
-- Open an issue on GitHub
-- Contact the maintainer
+- Flask for backend application development.
+- ChromaDB for vector database functionality.
+- Sentence Transformers for semantic embeddings.
+- Groq for cloud-based LLM inference.
+- Open-source contributors and developers.
 
 ---
 
-⭐ If you found this project helpful, please give it a star!
+⭐ If you find this project interesting, consider giving it a star!
